@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import data from "./data";
+import List from "./components/List";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [people, setPepole] = useState(data);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <main>
+      <section className="container">
+        <h3>{people.length} Birthdays For Today</h3>
+        <List people={people} />
+        <button
+          onClick={() => {
+            setPepole([]);
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Clear All{" "}
+        </button>
+      </section>
+    </main>
   );
-}
+};
 
 export default App;
